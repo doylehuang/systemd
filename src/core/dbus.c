@@ -381,7 +381,7 @@ static int bus_unit_cgroup_find(sd_bus *bus, const char *path, const char *inter
         if (!streq_ptr(interface, UNIT_VTABLE(u)->bus_interface))
                 return 0;
 
-        if (!unit_get_cgroup_context(u))
+        if (!UNIT_HAS_CGROUP_CONTEXT(u))
                 return 0;
 
         *found = u;

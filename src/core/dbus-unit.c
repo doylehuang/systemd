@@ -965,8 +965,7 @@ static int bus_unit_set_transient_property(
 
                 return 1;
 
-        } else if (streq(name, "Slice")) {
-                Unit *slice;
+        } else if (streq(name, "Slice") && UNIT_HAS_CGROUP_CONTEXT(u)) {
                 const char *s;
 
                 if (!UNIT_HAS_CGROUP_CONTEXT(u))
