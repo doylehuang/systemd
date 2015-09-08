@@ -1246,8 +1246,7 @@ int config_parse_exec_selinux_context(
         assert(data);
 
         if (isempty(rvalue)) {
-                free(c->selinux_context);
-                c->selinux_context = NULL;
+                c->selinux_context = mfree(c->selinux_context);
                 c->selinux_context_ignore = false;
                 return 0;
         }
@@ -1296,8 +1295,7 @@ int config_parse_exec_apparmor_profile(
         assert(data);
 
         if (isempty(rvalue)) {
-                free(c->apparmor_profile);
-                c->apparmor_profile = NULL;
+                c->apparmor_profile = mfree(c->apparmor_profile);
                 c->apparmor_profile_ignore = false;
                 return 0;
         }
@@ -1346,8 +1344,7 @@ int config_parse_exec_smack_process_label(
         assert(data);
 
         if (isempty(rvalue)) {
-                free(c->smack_process_label);
-                c->smack_process_label = NULL;
+                c->smack_process_label = mfree(c->smack_process_label);
                 c->smack_process_label_ignore = false;
                 return 0;
         }
@@ -3631,8 +3628,7 @@ int unit_load_fragment(Unit *u) {
                         /* Hmm, this didn't work? Then let's get rid
                          * of the fragment path stored for us, so that
                          * we don't point to an invalid location. */
-                        free(u->fragment_path);
-                        u->fragment_path = NULL;
+                        u->fragment_path = mfree(u->fragment_path);
                 }
         }
 
