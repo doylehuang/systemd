@@ -384,6 +384,9 @@ static int mount_add_default_dependencies(Mount *m) {
 
         assert(m);
 
+        if (!UNIT(m)->default_dependencies)
+                return 0;
+
         if (UNIT(m)->manager->running_as != MANAGER_SYSTEM)
                 return 0;
 
@@ -524,11 +527,9 @@ static int mount_add_extras(Mount *m) {
         if (r < 0)
                 return r;
 
-        if (u->default_dependencies) {
-                r = mount_add_default_dependencies(m);
-                if (r < 0)
-                        return r;
-        }
+        r = mount_add_default_dependencies(m);
+        if (r < 0)
+                return r;
 
         return 0;
 }
