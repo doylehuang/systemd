@@ -261,6 +261,31 @@
       </varlistentry>
 
       <varlistentry>
+        <term><varname>ListenUSBFunction=</varname></term>
+        <listitem><para>Specifies a <ulink
+        url="https://www.kernel.org/doc/Documentation/usb/functionfs.txt">USB
+        FunctionFS</ulink> endpoint location to listen on, for
+        implementation of USB gadget functions. This expects an
+        absolute file system path as the argument. Behavior otherwise
+        is very similar to the <varname>ListenFIFO=</varname>
+        directive above. Use this to open the FunctionFS endpoint
+        <filename>ep0</filename>. When using this option, the
+        activated service has to have the
+        <varname>USBFunctionDescriptors=</varname> and
+        <varname>USBFunctionStrings=</varname> options set.
+        </para></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><varname>SocketProtocol=</varname></term>
+        <listitem><para>Takes a one of <option>udplite</option>
+        or <option>sctp</option>. Specifies a socket protocol
+        (<constant>IPPROTO_UDPLITE</constant>) UDP-Lite
+        (<constant>IPPROTO_SCTP</constant>) SCTP socket respectively. </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
         <term><varname>BindIPv6Only=</varname></term>
         <listitem><para>Takes a one of <option>default</option>,
         <option>both</option> or <option>ipv6-only</option>. Controls

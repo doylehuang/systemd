@@ -138,6 +138,8 @@ struct Socket {
         bool remove_on_stop;
         bool writable;
 
+        int socket_protocol;
+
         /* Socket options */
         bool keep_alive;
         bool no_delay;
