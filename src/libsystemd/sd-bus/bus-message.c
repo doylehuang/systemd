@@ -134,7 +134,7 @@ static void message_free(sd_bus_message *m) {
         if (m->free_kdbus)
                 free(m->kdbus);
 
-        sd_bus_unref(m->bus);
+        sd_bus_flush_close_unref(m->bus);
 
         if (m->free_fds) {
                 close_many(m->fds, m->n_fds);

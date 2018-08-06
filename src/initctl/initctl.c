@@ -253,8 +253,7 @@ static void server_done(Server *s) {
         safe_close(s->epoll_fd);
 
         if (s->bus) {
-                sd_bus_flush(s->bus);
-                sd_bus_unref(s->bus);
+                sd_bus_flush_close_unref(s->bus);
         }
 }
 

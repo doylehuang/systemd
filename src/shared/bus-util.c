@@ -562,7 +562,7 @@ int bus_open_system_systemd(sd_bus **_bus) {
                 return 0;
         }
 
-        bus = sd_bus_unref(bus);
+        bus = sd_bus_flush_close_unref(bus);
 
         r = sd_bus_new(&bus);
         if (r < 0)
@@ -612,7 +612,7 @@ int bus_open_user_systemd(sd_bus **_bus) {
                 return 0;
         }
 
-        bus = sd_bus_unref(bus);
+        bus = sd_bus_flush_close_unref(bus);
 
         e = secure_getenv("XDG_RUNTIME_DIR");
         if (!e)
@@ -1630,7 +1630,7 @@ void bus_wait_for_jobs_free(BusWaitForJobs *d) {
         sd_bus_slot_unref(d->slot_disconnected);
         sd_bus_slot_unref(d->slot_job_removed);
 
-        sd_bus_unref(d->bus);
+        sd_bus_flush_close_unref(d->bus);
 
         free(d->name);
         free(d->result);
