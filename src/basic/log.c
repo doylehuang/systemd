@@ -43,7 +43,7 @@
 #define SNDBUF_SIZE (8*1024*1024)
 
 static LogTarget log_target = LOG_TARGET_CONSOLE;
-static int log_max_level = LOG_INFO;
+static int log_max_level = LOG_DEBUG;
 static int log_facility = LOG_DAEMON;
 
 static int console_fd = STDERR_FILENO;
