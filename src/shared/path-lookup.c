@@ -319,12 +319,16 @@ int lookup_paths_init(
                         return -ENOMEM;
 
                 r = strv_extend_strv(&p->unit_path, unit_path);
-                if (r < 0)
+                if (r < 0) {
+						strv_free(unit_path);
                         return r;
+                }
         }
 
-        if (!path_strv_resolve_uniq(p->unit_path, root_dir))
+        if (!path_strv_resolve_uniq(p->unit_path, root_dir)) {
+				strv_free(p->unit_path);
                 return -ENOMEM;
+        }
 
         if (!strv_isempty(p->unit_path)) {
                 _cleanup_free_ char *t = strv_join(p->unit_path, "\n\t");

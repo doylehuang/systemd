@@ -892,8 +892,10 @@ static int list_units_filtered(sd_bus_message *message, void *userdata, sd_bus_e
 
                 if (u->job) {
                         job_path = job_dbus_path(u->job);
-                        if (!job_path)
+                        if (!job_path) {
+								strv_free(unit_path);
                                 return -ENOMEM;
+                        }
                 }
 
                 r = sd_bus_message_append(
@@ -908,11 +910,15 @@ static int list_units_filtered(sd_bus_message *message, void *userdata, sd_bus_e
                                 u->job ? u->job->id : 0,
                                 u->job ? job_type_to_string(u->job->type) : "",
                                 job_path ? job_path : "/");
-                if (r < 0)
+				
+                if (r < 0) {
+						strv_free(unit_path);
                         return r;
+                }
         }
 
         r = sd_bus_message_close_container(reply);
+		
         if (r < 0)
                 return r;
 
