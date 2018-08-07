@@ -383,7 +383,7 @@ static int write_to_syslog(
              header_time[64],
              header_pid[4 + DECIMAL_STR_MAX(pid_t) + 1];
         struct iovec iovec[5] = {};
-        struct msghdr msghdr = {
+        _cleanup_close_ struct msghdr msghdr = {
                 .msg_iov = iovec,
                 .msg_iovlen = ELEMENTSOF(iovec),
         };
@@ -515,7 +515,7 @@ static int write_to_journal(
 
         char header[LINE_MAX];
         struct iovec iovec[4] = {};
-        struct msghdr mh = {};
+        _cleanup_close_ struct msghdr mh = {};
 
         if (journal_fd < 0)
                 return 0;
@@ -820,7 +820,7 @@ int log_struct_internal(
                 char header[LINE_MAX];
                 struct iovec iovec[17] = {};
                 unsigned n = 0, i;
-                struct msghdr mh = {
+                _cleanup_close_ struct msghdr mh = {
                         .msg_iov = iovec,
                 };
                 static const char nl = '\n';

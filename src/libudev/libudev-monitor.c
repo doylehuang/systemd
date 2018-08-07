@@ -717,7 +717,7 @@ int udev_monitor_send_device(struct udev_monitor *udev_monitor,
         struct iovec iov[2] = {
                 { .iov_base = &nlh, .iov_len = sizeof nlh },
         };
-        struct msghdr smsg = {
+        _cleanup_close_ struct msghdr smsg = {
                 .msg_iov = iov,
                 .msg_iovlen = 2,
         };

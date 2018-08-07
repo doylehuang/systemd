@@ -108,7 +108,7 @@ int dhcp_network_icmp6_send_router_solicitation(int s, const struct ether_addr *
         struct iovec iov[1] = {
                 { &rs, },
         };
-        struct msghdr msg = {
+        _cleanup_close_ struct msghdr msg = {
                 .msg_name = &dst,
                 .msg_namelen = sizeof(dst),
                 .msg_iov = iov,

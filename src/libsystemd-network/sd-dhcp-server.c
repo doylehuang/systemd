@@ -259,7 +259,7 @@ static int dhcp_server_send_udp(sd_dhcp_server *server, be32_t destination,
                 .iov_len = len,
         };
         uint8_t cmsgbuf[CMSG_LEN(sizeof(struct in_pktinfo))] = {};
-        struct msghdr msg = {
+        _cleanup_close_ struct msghdr msg = {
                 .msg_name = &dest,
                 .msg_namelen = sizeof(dest.in),
                 .msg_iov = &iov,

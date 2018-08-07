@@ -345,7 +345,7 @@ _public_ int sd_pid_notify_with_fds(pid_t pid, int unset_environment, const char
         struct iovec iovec = {
                 .iov_base = (char*) state,
         };
-        struct msghdr msghdr = {
+        _cleanup_close_ struct msghdr msghdr = {
                 .msg_iov = &iovec,
                 .msg_iovlen = 1,
                 .msg_name = &sockaddr,

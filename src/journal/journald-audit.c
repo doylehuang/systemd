@@ -492,7 +492,7 @@ static int enable_audit(int fd, bool b) {
                 .iov_base = &request,
                 .iov_len = NLMSG_LENGTH(sizeof(struct audit_status)),
         };
-        struct msghdr mh = {
+        _cleanup_close_ struct msghdr mh = {
                 .msg_iov = &iovec,
                 .msg_iovlen = 1,
                 .msg_name = &sa.sa,

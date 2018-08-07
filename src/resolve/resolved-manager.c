@@ -40,7 +40,7 @@
 #include "resolved-manager.h"
 #include "resolved-llmnr.h"
 
-#define SEND_TIMEOUT_USEC (200 * USEC_PER_MSEC)
+#define SEND_TIMEOUT_USEC (20 * USEC_PER_MSEC)
 
 static int manager_process_link(sd_netlink *rtnl, sd_netlink_message *mm, void *userdata) {
         Manager *m = userdata;

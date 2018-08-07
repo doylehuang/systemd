@@ -147,7 +147,7 @@ static int bus_socket_write_auth(sd_bus *b) {
         if (b->prefer_writev)
                 k = writev(b->output_fd, b->auth_iovec + b->auth_index, ELEMENTSOF(b->auth_iovec) - b->auth_index);
         else {
-                struct msghdr mh;
+                _cleanup_close_ struct msghdr mh;
                 zero(mh);
 
                 mh.msg_iov = b->auth_iovec + b->auth_index;
@@ -788,7 +788,7 @@ int bus_socket_write_message(sd_bus *bus, sd_bus_message *m, size_t *idx) {
         if (bus->prefer_writev)
                 k = writev(bus->output_fd, iov, m->n_iovec);
         else {
-                struct msghdr mh = {
+                _cleanup_close_ struct msghdr mh = {
                         .msg_iov = iov,
                         .msg_iovlen = m->n_iovec,
                 };

@@ -263,7 +263,7 @@ static int send_addrinfo_reply(
                 ._h_errno = _h_errno,
         };
 
-        struct msghdr mh = {};
+        _cleanup_close_ struct msghdr mh = {};
         struct iovec iov[2];
         union {
                 AddrInfoSerialization ais;
@@ -317,7 +317,7 @@ static int send_nameinfo_reply(
                 ._h_errno = _h_errno,
         };
 
-        struct msghdr mh = {};
+        _cleanup_close_ struct msghdr mh = {};
         struct iovec iov[3];
         size_t hl, sl;
 
@@ -353,7 +353,7 @@ static int send_res_reply(int out_fd, unsigned id, const unsigned char *answer, 
                 ._h_errno = _h_errno,
         };
 
-        struct msghdr mh = {};
+        _cleanup_close_ struct msghdr mh = {};
         struct iovec iov[2];
         size_t l;
 
@@ -1046,7 +1046,7 @@ _public_ int sd_resolve_getaddrinfo(
                 sd_resolve_getaddrinfo_handler_t callback, void *userdata) {
 
         AddrInfoRequest req = {};
-        struct msghdr mh = {};
+        _cleanup_close_ struct msghdr mh = {};
         struct iovec iov[3];
         sd_resolve_query *q;
         int r;
@@ -1120,7 +1120,7 @@ _public_ int sd_resolve_getnameinfo(
                 void *userdata) {
 
         NameInfoRequest req = {};
-        struct msghdr mh = {};
+        _cleanup_close_ struct msghdr mh = {};
         struct iovec iov[2];
         sd_resolve_query *q;
         int r;
@@ -1189,7 +1189,7 @@ static int resolve_res(
                 int class, int type,
                 sd_resolve_res_handler_t callback, void *userdata) {
 
-        struct msghdr mh = {};
+        _cleanup_close_ struct msghdr mh = {};
         struct iovec iov[2];
         ResRequest req = {};
         sd_resolve_query *q;

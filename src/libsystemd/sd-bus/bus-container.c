@@ -125,7 +125,7 @@ int bus_container_connect_kernel(sd_bus *b) {
                 struct cmsghdr cmsghdr;
                 uint8_t buf[CMSG_SPACE(sizeof(int))];
         } control = {};
-        struct msghdr mh = {
+        _cleanup_close_ struct msghdr mh = {
                 .msg_control = &control,
                 .msg_controllen = sizeof(control),
         };

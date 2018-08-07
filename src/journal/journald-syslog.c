@@ -43,7 +43,7 @@ static void forward_syslog_iovec(Server *s, const struct iovec *iovec, unsigned 
                 .un.sun_family = AF_UNIX,
                 .un.sun_path = "/run/systemd/journal/syslog",
         };
-        struct msghdr msghdr = {
+        _cleanup_close_ struct msghdr msghdr = {
                 .msg_iov = (struct iovec *) iovec,
                 .msg_iovlen = n_iovec,
                 .msg_name = (struct sockaddr*) &sa.sa,

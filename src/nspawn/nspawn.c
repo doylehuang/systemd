@@ -1896,7 +1896,7 @@ static int setup_kmsg(const char *dest, int kmsg_socket) {
                 struct cmsghdr cmsghdr;
                 uint8_t buf[CMSG_SPACE(sizeof(int))];
         } control = {};
-        struct msghdr mh = {
+        _cleanup_close_ struct msghdr mh = {
                 .msg_control = &control,
                 .msg_controllen = sizeof(control),
         };
@@ -1952,7 +1952,7 @@ static int send_rtnl(int send_fd) {
                 struct cmsghdr cmsghdr;
                 uint8_t buf[CMSG_SPACE(sizeof(int))];
         } control = {};
-        struct msghdr mh = {
+        _cleanup_close_ struct msghdr mh = {
                 .msg_control = &control,
                 .msg_controllen = sizeof(control),
         };

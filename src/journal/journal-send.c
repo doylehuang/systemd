@@ -207,7 +207,7 @@ _public_ int sd_journal_sendv(const struct iovec *iov, int n) {
                 .sun_family = AF_UNIX,
                 .sun_path = "/run/systemd/journal/socket",
         };
-        struct msghdr mh = {
+        _cleanup_close_ struct msghdr mh = {
                 .msg_name = &sa,
                 .msg_namelen = offsetof(struct sockaddr_un, sun_path) + strlen(sa.sun_path),
         };
