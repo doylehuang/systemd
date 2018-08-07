@@ -1037,6 +1037,7 @@ static void destroy_bus(Manager *m, sd_bus **bus) {
         /* And destroy the object */
         sd_bus_close(*bus);
         *bus = sd_bus_flush_close_unref(*bus);
+		*bus = NULL;
 }
 
 void bus_done(Manager *m) {

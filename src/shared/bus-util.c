@@ -562,7 +562,7 @@ int bus_open_system_systemd(sd_bus **_bus) {
                 return 0;
         }
 
-        bus = sd_bus_flush_close_unref(bus);
+        bus = sd_bus_unref(bus);
 
         r = sd_bus_new(&bus);
         if (r < 0)
@@ -612,7 +612,7 @@ int bus_open_user_systemd(sd_bus **_bus) {
                 return 0;
         }
 
-        bus = sd_bus_flush_close_unref(bus);
+        bus = sd_bus_unref(bus);
 
         e = secure_getenv("XDG_RUNTIME_DIR");
         if (!e)

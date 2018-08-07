@@ -192,7 +192,7 @@ void bus_slot_disconnect(sd_bus_slot *slot) {
         LIST_REMOVE(slots, bus->slots, slot);
 
         if (!slot->floating)
-                sd_bus_flush_close_unref(bus);
+                sd_bus_unref(bus);
 }
 
 _public_ sd_bus_slot* sd_bus_slot_unref(sd_bus_slot *slot) {
