@@ -445,6 +445,7 @@ int main(int argc, char *argv[]) {
         progress_pipe[0] = -1;
 
         r = wait_for_terminate(pid, &status);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         if (r < 0) {
                 log_error_errno(r, "waitid(): %m");
                 goto finish;

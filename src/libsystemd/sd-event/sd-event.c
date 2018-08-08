@@ -1984,6 +1984,8 @@ static int process_child(sd_event *e) {
            the callback still sees the process as a zombie.
         */
 
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+
         HASHMAP_FOREACH(s, e->child_sources, i) {
                 assert(s->type == SOURCE_CHILD);
 
@@ -2130,6 +2132,8 @@ static int source_dispatch(sd_event_source *s) {
 
         case SOURCE_CHILD: {
                 bool zombie;
+
+				printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
 
                 zombie = s->child.siginfo.si_code == CLD_EXITED ||
                          s->child.siginfo.si_code == CLD_KILLED ||

@@ -417,6 +417,8 @@ int wait_for_terminate(pid_t pid, siginfo_t *status) {
         if (!status)
                 status = &dummy;
 
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+
         for (;;) {
                 zero(*status);
 

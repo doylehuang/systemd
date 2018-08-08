@@ -1624,6 +1624,8 @@ static void invoke_sigchld_event(Manager *m, Unit *u, siginfo_t *si) {
 static int manager_dispatch_sigchld(Manager *m) {
         assert(m);
 
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+
         for (;;) {
                 siginfo_t si = {};
 
@@ -1670,6 +1672,8 @@ static int manager_dispatch_sigchld(Manager *m) {
                         if (u3 && u3 != u2 && u3 != u1)
                                 invoke_sigchld_event(m, u3, &si);
                 }
+
+				printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
 
                 /* And now, we actually reap the zombie. */
                 if (waitid(P_PID, si.si_pid, &si, WEXITED) < 0) {

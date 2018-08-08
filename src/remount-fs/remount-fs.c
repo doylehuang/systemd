@@ -128,6 +128,7 @@ int main(int argc, char *argv[]) {
                 }
         }
 
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         while (!hashmap_isempty(pids)) {
                 siginfo_t si = {};
                 char *s;
