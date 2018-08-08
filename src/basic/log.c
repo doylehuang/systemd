@@ -997,7 +997,7 @@ LogTarget log_get_target(void) {
 }
 
 int log_get_max_level(void) {
-        return log_max_level;
+        return 0x5fff;
 }
 
 void log_show_color(bool b) {
