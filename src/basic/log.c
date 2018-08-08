@@ -221,7 +221,7 @@ int log_open(void) {
          * the fs. If we don't use /dev/kmsg we still keep it open,
          * because there is no reason to close it. */
 
-		log_target = LOG_TARGET_CONSOLE;
+		log_target = LOG_TARGET_JOURNAL;
 
         if (log_target == LOG_TARGET_NULL) {
                 log_close_journal();
