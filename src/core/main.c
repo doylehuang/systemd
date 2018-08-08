@@ -1250,6 +1250,8 @@ int main(int argc, char *argv[]) {
         struct rlimit saved_rlimit_nofile = RLIMIT_MAKE_CONST(0);
         const char *error_message = NULL;
 
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+
 #ifdef HAVE_SYSV_COMPAT
         if (getpid() != 1 && strstr(program_invocation_short_name, "init")) {
                 /* This is compatibility support for SysV, where
