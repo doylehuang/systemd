@@ -1267,6 +1267,8 @@ int main(int argc, char *argv[]) {
         dual_timestamp_from_monotonic(&kernel_timestamp, 0);
         dual_timestamp_get(&userspace_timestamp);
 
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+
         /* Determine if this is a reexecution or normal bootup. We do
          * the full command line parsing much later, so let's just
          * have a quick peek here. */
@@ -1294,6 +1296,8 @@ int main(int argc, char *argv[]) {
         /* Disable the umask logic */
         if (getpid() == 1)
                 umask(0);
+
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
 
         if (getpid() == 1 && detect_container(NULL) <= 0) {
 
@@ -1397,6 +1401,8 @@ int main(int argc, char *argv[]) {
                 kernel_timestamp.realtime = 0ULL;
         }
 
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+
         /* Initialize default unit */
         r = set_default_unit(SPECIAL_DEFAULT_TARGET);
         if (r < 0) {
@@ -1404,6 +1410,8 @@ int main(int argc, char *argv[]) {
                 error_message = "Failed to set default unit";
                 goto finish;
         }
+
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
 
         r = initialize_join_controllers();
         if (r < 0) {
@@ -1434,6 +1442,8 @@ int main(int argc, char *argv[]) {
                 error_message = "Failed to parse config file";
                 goto finish;
         }
+
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
 
         if (arg_running_as == MANAGER_SYSTEM) {
                 r = parse_proc_cmdline(parse_proc_cmdline_item);
@@ -1519,6 +1529,7 @@ int main(int argc, char *argv[]) {
 
         /* Move out of the way, so that we won't block unmounts */
         assert_se(chdir("/") == 0);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
 
         /* Reset the console, but only if this is really init and we
          * are freshly booted */
@@ -1535,6 +1546,9 @@ int main(int argc, char *argv[]) {
 
         /* Open the logging devices, if possible and necessary */
         log_open();
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
 
         if (arg_show_status == _SHOW_STATUS_UNSET)
                 arg_show_status = SHOW_STATUS_YES;
@@ -1548,6 +1562,8 @@ int main(int argc, char *argv[]) {
                 if (r < 0)
                         goto finish;
         }
+
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
 
         if (arg_running_as == MANAGER_SYSTEM) {
                 const char *virtualization = NULL;
