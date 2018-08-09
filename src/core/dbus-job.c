@@ -102,6 +102,10 @@ static int send_new_signal(sd_bus *bus, void *userdata) {
         if (!p)
                 return -ENOMEM;
 
+
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+
         r = sd_bus_message_new_signal(
                         bus,
                         &m,
@@ -162,6 +166,8 @@ static int send_removed_signal(sd_bus *bus, void *userdata) {
         if (!p)
                 return -ENOMEM;
 
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         r = sd_bus_message_new_signal(
                         bus,
                         &m,

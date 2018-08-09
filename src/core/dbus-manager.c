@@ -1566,6 +1566,9 @@ static int send_unit_files_changed(sd_bus *bus, void *userdata) {
 
         assert(bus);
 
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+
         r = sd_bus_message_new_signal(bus, &message, "/org/freedesktop/systemd1", "org.freedesktop.systemd1.Manager", "UnitFilesChanged");
         if (r < 0)
                 return r;
@@ -2010,6 +2013,9 @@ static int send_finished(sd_bus *bus, void *userdata) {
         assert(bus);
         assert(times);
 
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+
         r = sd_bus_message_new_signal(bus, &message, "/org/freedesktop/systemd1", "org.freedesktop.systemd1.Manager", "StartupFinished");
         if (r < 0)
                 return r;
@@ -2056,6 +2062,9 @@ static int send_reloading(sd_bus *bus, void *userdata) {
 
         assert(bus);
 
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+
         r = sd_bus_message_new_signal(bus, &message, "/org/freedesktop/systemd1", "org.freedesktop.systemd1.Manager", "Reloading");
         if (r < 0)
                 return r;
@@ -2079,6 +2088,9 @@ void bus_manager_send_reloading(Manager *m, bool active) {
 
 static int send_changed_signal(sd_bus *bus, void *userdata) {
         assert(bus);
+
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
 
         return sd_bus_emit_properties_changed_strv(bus,
                                                    "/org/freedesktop/systemd1",

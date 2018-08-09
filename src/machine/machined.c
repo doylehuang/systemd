@@ -233,8 +233,10 @@ static int manager_connect_bus(Manager *m) {
                              match_unit_removed,
                              m);
 		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         if (r < 0) {
 				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+				printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
                 return log_error_errno(r, "Failed to add match for UnitRemoved: %m");
         	}
 

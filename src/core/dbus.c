@@ -185,6 +185,8 @@ failed:
 
         log_debug("D-Bus activation failed for %s: %s", name, bus_error_message(&error, r));
 
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         r = sd_bus_message_new_signal(sd_bus_message_get_bus(message), &reply, "/org/freedesktop/systemd1", "org.freedesktop.systemd1.Activator", "ActivationFailure");
         if (r < 0) {
                 bus_log_create_error(r);
@@ -297,6 +299,7 @@ static int find_unit(Manager *m, sd_bus *bus, const char *path, Unit **unit, sd_
         assert(m);
         assert(bus);
         assert(path);
+		
 
         if (streq_ptr(path, "/org/freedesktop/systemd1/unit/self")) {
                 _cleanup_bus_creds_unref_ sd_bus_creds *creds = NULL;
@@ -533,6 +536,9 @@ static int bus_setup_api_vtables(Manager *m, sd_bus *bus) {
         if (r < 0)
                 return log_error_errno(r, "Failed to add SELinux access filter: %m");
 #endif
+
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
 
         r = sd_bus_add_object_vtable(bus, NULL, "/org/freedesktop/systemd1", "org.freedesktop.systemd1.Manager", bus_manager_vtable, m);
         if (r < 0)

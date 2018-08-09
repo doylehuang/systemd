@@ -52,6 +52,9 @@ int main(int argc, char *argv[]) {
                 return EXIT_FAILURE;
         }
 
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+
         r = sd_bus_emit_signal(bus,
                                "/org/freedesktop/systemd1/agent",
                                "org.freedesktop.systemd1.Agent",

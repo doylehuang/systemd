@@ -1658,6 +1658,9 @@ int bus_wait_for_jobs_new(sd_bus *bus, BusWaitForJobs **ret) {
         /* When we are a bus client we match by sender. Direct
          * connections OTOH have no initialized sender field, and
          * hence we ignore the sender then */
+
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         r = sd_bus_add_match(
                         bus,
                         &d->slot_job_removed,

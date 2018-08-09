@@ -715,6 +715,8 @@ int bus_proxy_process_driver(Proxy *p, sd_bus *a, sd_bus *b, sd_bus_message *m, 
                 if (strv_isempty(args)) /* nothing to do? */
                         return synthetic_reply_method_return(m, NULL);
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
                 r = sd_bus_message_new_method_call(
                                 a,
                                 &msg,
