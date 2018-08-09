@@ -57,6 +57,8 @@ int bus_container_connect_socket(sd_bus *b) {
 
         bus_socket_setup(b);
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         child = fork();
         if (child < 0)
                 return -errno;
@@ -75,6 +77,8 @@ int bus_container_connect_socket(sd_bus *b) {
                  * comes from a process from within the container, and
                  * not outside of it */
 
+						log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
                 grandchild = fork();
                 if (grandchild < 0)
                         _exit(255);
@@ -153,6 +157,8 @@ int bus_container_connect_kernel(sd_bus *b) {
         if (socketpair(AF_UNIX, SOCK_DGRAM, 0, pair) < 0)
                 return -errno;
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         child = fork();
         if (child < 0)
                 return -errno;
@@ -173,6 +179,8 @@ int bus_container_connect_kernel(sd_bus *b) {
                  * of this process which comes from within the
                  * container, and not outside of it */
 
+						log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
                 grandchild = fork();
                 if (grandchild < 0)
                         _exit(EXIT_FAILURE);

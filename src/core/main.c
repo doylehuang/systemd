@@ -1547,7 +1547,6 @@ int main(int argc, char *argv[]) {
         /* Open the logging devices, if possible and necessary */
         log_open();
 		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
-		
 		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
 
         if (arg_show_status == _SHOW_STATUS_UNSET)

@@ -86,6 +86,8 @@ static int spawn_child(const char* child, char** argv) {
 
         parent_pid = getpid();
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         child_pid = fork();
         if (child_pid < 0) {
                 r = -errno;

@@ -81,6 +81,8 @@ int import_fork_tar_x(const char *path, pid_t *ret) {
         if (pipe2(pipefd, O_CLOEXEC) < 0)
                 return log_error_errno(errno, "Failed to create pipe for tar: %m");
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         pid = fork();
         if (pid < 0)
                 return log_error_errno(errno, "Failed to fork off tar: %m");
@@ -161,6 +163,8 @@ int import_fork_tar_c(const char *path, pid_t *ret) {
         if (pipe2(pipefd, O_CLOEXEC) < 0)
                 return log_error_errno(errno, "Failed to create pipe for tar: %m");
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         pid = fork();
         if (pid < 0)
                 return log_error_errno(errno, "Failed to fork off tar: %m");

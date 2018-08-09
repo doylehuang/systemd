@@ -1148,6 +1148,8 @@ static int get_boot_id_for_machine(const char *machine, sd_id128_t *boot_id) {
         if (socketpair(AF_UNIX, SOCK_DGRAM, 0, pair) < 0)
                 return -errno;
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         child = fork();
         if (child < 0)
                 return -errno;

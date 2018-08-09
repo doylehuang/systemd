@@ -3688,6 +3688,8 @@ static int spawn_getent(const char *database, const char *key, pid_t *rpid) {
         if (pipe2(pipe_fds, O_CLOEXEC) < 0)
                 return log_error_errno(errno, "Failed to allocate pipe: %m");
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         pid = fork();
         if (pid < 0)
                 return log_error_errno(errno, "Failed to fork getent child: %m");

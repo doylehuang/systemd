@@ -577,6 +577,8 @@ pid_t pty_fork(Pty **out, sd_event *event, pty_event_t event_fn, void *event_fn_
         if (r < 0)
                 return r;
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         pid = fork();
         if (pid < 0)
                 return -errno;

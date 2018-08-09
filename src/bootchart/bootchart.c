@@ -338,6 +338,8 @@ int main(int argc, char *argv[]) {
          * - child logs data
          */
         if (getpid() == 1) {
+						log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
                 if (fork()) {
                         /* parent */
                         execl(arg_init_path, arg_init_path, NULL);

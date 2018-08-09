@@ -99,6 +99,9 @@ static int setup_machine_raw(uint64_t size, sd_bus_error *error) {
                 goto fail;
         }
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+
         pid = fork();
         if (pid < 0) {
                 r = sd_bus_error_set_errnof(error, errno, "Failed to fork mkfs.btrfs: %m");

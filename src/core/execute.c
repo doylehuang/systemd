@@ -829,6 +829,8 @@ static int setup_pam(
 
         parent_pid = getpid();
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         pam_pid = fork();
         if (pam_pid < 0)
                 goto fail;
@@ -1920,6 +1922,9 @@ int exec_spawn(Unit *unit,
                    LOG_UNIT_MESSAGE(unit, "About to execute: %s", line),
                    "EXECUTABLE=%s", command->path,
                    NULL);
+
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         pid = fork();
         if (pid < 0)
                 return log_unit_error_errno(unit, r, "Failed to fork: %m");

@@ -709,6 +709,8 @@ int bus_socket_exec(sd_bus *b) {
         if (r < 0)
                 return -errno;
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         pid = fork();
         if (pid < 0) {
                 safe_close_pair(s);

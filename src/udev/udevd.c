@@ -339,6 +339,8 @@ static void worker_spawn(Manager *manager, struct event *event) {
         if (r < 0)
                 log_error_errno(r, "worker: could not enable receiving of device: %m");
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         pid = fork();
         switch (pid) {
         case 0: {
@@ -1741,6 +1743,8 @@ int main(int argc, char *argv[]) {
                 if (log_get_max_level() < LOG_DEBUG)
                         (void) make_null_stdio();
 
+						log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
                 pid = fork();
                 switch (pid) {
                 case 0:

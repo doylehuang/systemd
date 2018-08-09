@@ -315,6 +315,8 @@ int pull_verify(
 
         gpg_home_created = true;
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         pid = fork();
         if (pid < 0)
                 return log_error_errno(errno, "Failed to fork off gpg: %m");

@@ -368,6 +368,8 @@ static int transfer_start(Transfer *t) {
         if (pipe2(pipefd, O_CLOEXEC) < 0)
                 return -errno;
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         t->pid = fork();
         if (t->pid < 0)
                 return -errno;

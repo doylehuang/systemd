@@ -188,6 +188,8 @@ static int launch1(const char* child, char** argv, char **env, int fd) {
         parent_pid = getpid();
 
         child_pid = fork();
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         if (child_pid < 0)
                 return log_error_errno(errno, "Failed to fork: %m");
 

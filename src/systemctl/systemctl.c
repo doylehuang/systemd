@@ -5212,6 +5212,8 @@ static int enable_sysv_units(const char *verb, char **args) {
 
                 log_info("Executing %s", l);
 
+						log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
                 pid = fork();
                 if (pid < 0)
                         return log_error_errno(errno, "Failed to fork: %m");
@@ -5873,6 +5875,8 @@ static int run_editor(char **paths) {
 
         assert(paths);
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         pid = fork();
         if (pid < 0) {
                 log_error_errno(errno, "Failed to fork: %m");

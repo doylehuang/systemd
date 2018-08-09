@@ -119,6 +119,8 @@ static int keyboard_load_and_wait(const char *vc, const char *map, const char *m
                 args[i++] = map_toggle;
         args[i++] = NULL;
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         pid = fork();
         if (pid < 0)
                 return log_error_errno(errno, "Failed to fork: %m");
@@ -161,6 +163,8 @@ static int font_load_and_wait(const char *vc, const char *font, const char *map,
         }
         args[i++] = NULL;
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         pid = fork();
         if (pid < 0)
                 return log_error_errno(errno, "Failed to fork: %m");

@@ -2900,6 +2900,8 @@ static int do_execute(char **directories, usec_t timeout, char *argv[]) {
                                 continue;
                         }
 
+								log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
                         pid = fork();
                         if (pid < 0) {
                                 log_error_errno(errno, "Failed to fork: %m");
@@ -2968,6 +2970,8 @@ void execute_directories(const char* const* directories, usec_t timeout, char *a
          * with the same name exists in more than one directory, the
          * earliest one wins. */
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         executor_pid = fork();
         if (executor_pid < 0) {
                 log_error_errno(errno, "Failed to fork: %m");
@@ -3857,6 +3861,8 @@ int fork_agent(pid_t *pid, const int except[], unsigned n_except, const char *pa
         assert_se(sigfillset(&ss) >= 0);
         assert_se(sigprocmask(SIG_SETMASK, &ss, &saved_ss) >= 0);
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         agent_pid = fork();
         if (agent_pid < 0) {
                 assert_se(sigprocmask(SIG_SETMASK, &saved_ss, NULL) >= 0);
@@ -6102,6 +6108,8 @@ int openpt_in_namespace(pid_t pid, int flags) {
         if (socketpair(AF_UNIX, SOCK_DGRAM, 0, pair) < 0)
                 return -errno;
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         child = fork();
         if (child < 0)
                 return -errno;

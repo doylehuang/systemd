@@ -349,6 +349,8 @@ int main(int argc, char *argv[]) {
 
                         log_info("Rebooting with kexec.");
 
+								log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
                         pid = fork();
                         if (pid < 0)
                                 log_error_errno(errno, "Failed to fork: %m");

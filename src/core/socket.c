@@ -1458,6 +1458,8 @@ static int socket_chown(Socket *s, pid_t *_pid) {
         /* We have to resolve the user names out-of-process, hence
          * let's fork here. It's messy, but well, what can we do? */
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         pid = fork();
         if (pid < 0)
                 return -errno;

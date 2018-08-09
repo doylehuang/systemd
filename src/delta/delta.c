@@ -187,6 +187,8 @@ static int found_override(const char *top, const char *bottom) {
 
         fflush(stdout);
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         pid = fork();
         if (pid < 0)
                 return log_error_errno(errno, "Failed to fork off diff: %m");

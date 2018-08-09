@@ -74,6 +74,8 @@ int pager_open(bool jump_to_end) {
 
         parent_pid = getpid();
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         pager_pid = fork();
         if (pager_pid < 0) {
                 r = -errno;
@@ -176,6 +178,8 @@ int show_man_page(const char *desc, bool null_stdio) {
         } else
                 args[1] = desc;
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         pid = fork();
         if (pid < 0)
                 return log_error_errno(errno, "Failed to fork: %m");

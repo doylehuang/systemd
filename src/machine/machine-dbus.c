@@ -260,6 +260,8 @@ int bus_machine_method_get_addresses(sd_bus_message *message, void *userdata, sd
                 if (socketpair(AF_UNIX, SOCK_SEQPACKET, 0, pair) < 0)
                         return -errno;
 
+						log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
                 child = fork();
                 if (child < 0)
                         return sd_bus_error_set_errnof(error, errno, "Failed to fork(): %m");
@@ -400,6 +402,8 @@ int bus_machine_method_get_os_release(sd_bus_message *message, void *userdata, s
                 if (socketpair(AF_UNIX, SOCK_SEQPACKET, 0, pair) < 0)
                         return -errno;
 
+						log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
                 child = fork();
                 if (child < 0)
                         return sd_bus_error_set_errnof(error, errno, "Failed to fork(): %m");
@@ -989,6 +993,9 @@ int bus_machine_method_bind_mount(sd_bus_message *message, void *userdata, sd_bu
                 goto finish;
         }
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+
         child = fork();
         if (child < 0) {
                 r = sd_bus_error_set_errnof(error, errno, "Failed to fork(): %m");
@@ -1184,6 +1191,8 @@ int bus_machine_method_copy(sd_bus_message *message, void *userdata, sd_bus_erro
         if (pipe2(errno_pipe_fd, O_CLOEXEC|O_NONBLOCK) < 0)
                 return sd_bus_error_set_errnof(error, errno, "Failed to create pipe: %m");
 
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+		printf("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         child = fork();
         if (child < 0)
                 return sd_bus_error_set_errnof(error, errno, "Failed to fork(): %m");
