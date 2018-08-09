@@ -913,6 +913,9 @@ static int introspect(sd_bus *bus, char **argv) {
                 if (argv[3] && !streq(argv[3], m->interface))
                         continue;
 
+
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+
                 r = sd_bus_call_method(bus, argv[1], argv[2], "org.freedesktop.DBus.Properties", "GetAll", &error, &reply, "s", m->interface);
                 if (r < 0) {
                         log_error("%s", bus_error_message(&error, r));

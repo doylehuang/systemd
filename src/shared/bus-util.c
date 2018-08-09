@@ -860,6 +860,8 @@ int bus_print_all_properties(sd_bus *bus, const char *dest, const char *path, ch
         assert(bus);
         assert(path);
 
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+
         r = sd_bus_call_method(bus,
                         dest,
                         path,
@@ -1151,6 +1153,8 @@ int bus_map_all_properties(
         assert(destination);
         assert(path);
         assert(map);
+
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
 
         r = sd_bus_call_method(
                         bus,

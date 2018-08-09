@@ -1499,6 +1499,7 @@ static int list_dependencies_get_dependencies(sd_bus *bus, const char *name, cha
         if (!path)
                 return log_oom();
 
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         r = sd_bus_call_method(
                         bus,
                         "org.freedesktop.systemd1",
@@ -4258,6 +4259,7 @@ static int show_one(
 
         log_debug("Showing one %s", path);
 
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         r = sd_bus_call_method(
                         bus,
                         "org.freedesktop.systemd1",
