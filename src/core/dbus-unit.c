@@ -826,18 +826,23 @@ static int send_removed_signal(sd_bus *bus, void *userdata) {
         if (!p)
                 return -ENOMEM;
 
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         r = sd_bus_message_new_signal(
                         bus,
                         &m,
                         "/org/freedesktop/systemd1",
                         "org.freedesktop.systemd1.Manager",
                         "UnitRemoved");
-        if (r < 0)
+        if (r < 0) {
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
                 return r;
+        }
 
         r = sd_bus_message_append(m, "so", u->id, p);
-        if (r < 0)
+        if (r < 0) {
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
                 return r;
+        }
 
         return sd_bus_send(bus, m, NULL);
 }

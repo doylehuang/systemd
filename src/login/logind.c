@@ -635,8 +635,11 @@ static int manager_connect_bus(Manager *m) {
                              "member='UnitRemoved',"
                              "path='/org/freedesktop/systemd1'",
                              match_unit_removed, m);
-        if (r < 0)
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+        if (r < 0) {
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
                 return log_error_errno(r, "Failed to add match for UnitRemoved: %m");
+        	}
 
         r = sd_bus_add_match(m->bus,
                              NULL,
