@@ -1492,6 +1492,8 @@ static void manager_invoke_notify_message(Manager *m, Unit *u, pid_t pid, char *
                 return;
         }
 
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+
         if (UNIT_VTABLE(u)->notify_message)
                 UNIT_VTABLE(u)->notify_message(u, pid, tags, fds);
         else

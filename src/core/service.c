@@ -2836,8 +2836,10 @@ static void service_notify_message(Unit *u, pid_t pid, char **tags, FDSet *fds) 
                         log_unit_debug(u, "Got notification message from PID "PID_FMT", but reception only permitted for main PID which is currently not known", pid);
                 return;
         } else
-                log_unit_debug(u, "Got notification message from PID "PID_FMT" (%s)", pid, isempty(cc) ? "n/a" : cc);
+                log_unit_debug(u, "Doyle Got notification message from PID "PID_FMT" (%s)", pid, isempty(cc) ? "n/a" : cc);
 
+		
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
         /* Interpret MAINPID= */
         e = strv_find_startswith(tags, "MAINPID=");
         if (e && IN_SET(s->state, SERVICE_START, SERVICE_START_POST, SERVICE_RUNNING, SERVICE_RELOAD)) {
@@ -2850,6 +2852,8 @@ static void service_notify_message(Unit *u, pid_t pid, char **tags, FDSet *fds) 
                 }
         }
 
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+
         /* Interpret RELOADING= */
         if (strv_find(tags, "RELOADING=1")) {
 
@@ -2860,6 +2864,8 @@ static void service_notify_message(Unit *u, pid_t pid, char **tags, FDSet *fds) 
 
                 notify_dbus = true;
         }
+
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
 
         /* Interpret READY= */
         if (strv_find(tags, "READY=1")) {
@@ -2879,6 +2885,8 @@ static void service_notify_message(Unit *u, pid_t pid, char **tags, FDSet *fds) 
                 notify_dbus = true;
         }
 
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+
         /* Interpret STOPPING= */
         if (strv_find(tags, "STOPPING=1")) {
 
@@ -2889,6 +2897,8 @@ static void service_notify_message(Unit *u, pid_t pid, char **tags, FDSet *fds) 
 
                 notify_dbus = true;
         }
+
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
 
         /* Interpret STATUS= */
         e = strv_find_startswith(tags, "STATUS=");
@@ -2915,6 +2925,8 @@ static void service_notify_message(Unit *u, pid_t pid, char **tags, FDSet *fds) 
                 }
         }
 
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+
         /* Interpret ERRNO= */
         e = strv_find_startswith(tags, "ERRNO=");
         if (e) {
@@ -2932,17 +2944,27 @@ static void service_notify_message(Unit *u, pid_t pid, char **tags, FDSet *fds) 
 
         /* Interpret WATCHDOG= */
         if (strv_find(tags, "WATCHDOG=1")) {
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
                 service_reset_watchdog(s);
         }
 
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+
         /* Add the passed fds to the fd store */
         if (strv_find(tags, "FDSTORE=1")) {
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
                 service_add_fd_store_set(s, fds);
         }
 
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+
         /* Notify clients about changed status or main pid */
-        if (notify_dbus)
+        if (notify_dbus) {
                 unit_add_to_dbus_queue(u);
+				log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
+        }
+
+		log_info("==> Doyle== %s, %d\n", __FUNCTION__, __LINE__);
 }
 
 static int service_get_timeout(Unit *u, uint64_t *timeout) {
