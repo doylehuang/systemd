@@ -43,7 +43,7 @@
 #define SNDBUF_SIZE (8*1024*1024)
 
 static LogTarget log_target = LOG_TARGET_CONSOLE;
-static int log_max_level = LOG_DEBUG;
+static int log_max_level = LOG_INFO;
 static int log_facility = LOG_DAEMON;
 
 static int console_fd = STDERR_FILENO;
@@ -220,9 +220,6 @@ int log_open(void) {
          * that we are not confused by somebody deleting the socket in
          * the fs. If we don't use /dev/kmsg we still keep it open,
          * because there is no reason to close it. */
-
-
-		log_target = LOG_TARGET_CONSOLE;
 
         if (log_target == LOG_TARGET_NULL) {
                 log_close_journal();
@@ -1000,7 +997,7 @@ LogTarget log_get_target(void) {
 }
 
 int log_get_max_level(void) {
-        return LOG_DEBUG;
+        return log_max_level;
 }
 
 void log_show_color(bool b) {

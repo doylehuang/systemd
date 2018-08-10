@@ -2562,7 +2562,6 @@ static void socket_notify_service_dead(Socket *s, bool failed_permanent) {
 }
 
 void socket_connection_unref(Socket *s) {
-		log_debug("Doyle %s, %d\n", __FUNCTION__, __LINE__);
         assert(s);
 
         /* The service is dead. Yay!
@@ -2573,9 +2572,7 @@ void socket_connection_unref(Socket *s) {
         assert(s->n_connections > 0);
         s->n_connections--;
 
-		log_debug("Doyle %s, %d\n", __FUNCTION__, __LINE__);
         log_unit_debug(UNIT(s), "One connection closed, %u left.", s->n_connections);
-		log_unit_debug(UNIT(s), "Doyle One connection closed, %u left.", s->n_connections);
 }
 
 static void socket_trigger_notify(Unit *u, Unit *other) {
