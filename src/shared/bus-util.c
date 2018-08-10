@@ -1630,7 +1630,7 @@ void bus_wait_for_jobs_free(BusWaitForJobs *d) {
         sd_bus_slot_unref(d->slot_disconnected);
         sd_bus_slot_unref(d->slot_job_removed);
 
-        sd_bus_unref(d->bus);
+        sd_bus_flush_close_unref(d->bus);
 
         free(d->name);
         free(d->result);

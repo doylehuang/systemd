@@ -1442,7 +1442,7 @@ _public_ sd_bus* sd_bus_flush_close_unref(sd_bus *bus) {
         sd_bus_flush(bus);
         sd_bus_close(bus);
 
-        return sd_bus_unref(bus);
+        return sd_bus_flush_close_unref(bus);
 }
 
 static void bus_enter_closing(sd_bus *bus) {

@@ -136,7 +136,7 @@ _public_ sd_bus_track* sd_bus_track_unref(sd_bus_track *track) {
 
         bus_track_remove_from_queue(track);
         hashmap_free(track->names);
-        sd_bus_unref(track->bus);
+        sd_bus_flush_close_unref(track->bus);
         free(track);
 
         return NULL;
