@@ -551,7 +551,7 @@ Manager *manager_free(Manager *m) {
         manager_llmnr_stop(m);
 
         sd_bus_slot_unref(m->prepare_for_sleep_slot);
-        sd_event_source_unref(m->bus_retry_event_source);
+        sd_bus_unref(m->bus_retry_event_source);
         sd_bus_flush_close_unref(m->bus);
 
         sd_event_source_unref(m->sigusr1_event_source);

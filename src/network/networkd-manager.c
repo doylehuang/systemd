@@ -478,7 +478,7 @@ void manager_free(Manager *m) {
 
         udev_monitor_unref(m->udev_monitor);
         udev_unref(m->udev);
-        sd_bus_flush_close_unref(m->bus);
+        sd_bus_unref(m->bus);
         sd_bus_slot_unref(m->prepare_for_sleep_slot);
         sd_event_source_unref(m->udev_event_source);
         sd_event_source_unref(m->bus_retry_event_source);
